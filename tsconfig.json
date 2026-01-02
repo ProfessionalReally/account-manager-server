@@ -1,0 +1,25 @@
+{
+	"compilerOptions": {
+		"outDir": "./dist",
+		"rootDir": "./src",
+		"baseUrl": "./",
+		"paths": {
+			"@/*": ["./src/*"]
+		},
+		"module": "nodenext",
+		"moduleResolution": "nodenext",
+		"target": "esnext",
+		"types": ["node", "express"],
+		"typeRoots": ["./node_modules/@types", "./src/types"],
+
+		"noUncheckedIndexedAccess": true,
+		"exactOptionalPropertyTypes": true,
+
+		"strict": true,
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true
+	},
+	"exclude": ["./dist/**/*", "./node_modules/**/*", "./logs/**/*"],
+	"include": ["src/**/*.ts", "src/**/*.d.ts"]
+}

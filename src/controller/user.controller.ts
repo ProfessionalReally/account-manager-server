@@ -23,7 +23,6 @@ export const registerUser = async (req: Request, res: Response) => {
 		res.cookie('token', token, cookieOptions);
 
 		res.status(201).json({
-			error: null,
 			data: mapUser(user),
 		});
 	} catch (error) {
@@ -56,7 +55,6 @@ export const loginUser = async (req: Request, res: Response) => {
 		res.cookie('token', token, cookieOptions);
 
 		res.status(200).json({
-			error: null,
 			data: mapUser(user),
 		});
 	} catch (error) {
@@ -66,7 +64,7 @@ export const loginUser = async (req: Request, res: Response) => {
 
 export const logoutUser = (req: Request, res: Response) => {
 	res.clearCookie('token', cookieOptions);
-	res.status(200).json({});
+	res.sendStatus(200);
 };
 
 export const getCurrentUser = (req: Request, res: Response) => {

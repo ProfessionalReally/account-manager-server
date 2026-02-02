@@ -1,5 +1,4 @@
-import { getCurrentUser, loginUser, logoutUser, registerUser } from '@/controller';
-import { authMiddleware } from '@/middleware';
+import { loginUser, logoutUser, registerUser } from '@/controller';
 import { Router } from 'express';
 
 const authRouter = Router({ mergeParams: true });

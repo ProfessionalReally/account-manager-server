@@ -6,3 +6,6 @@ export type { ServiceDocument, ServiceType } from './service.model';
 
 export { Category } from './category.model';
 export type { CategoryDocument, CategoryType } from './category.model';
+
+export { Account } from './account.model';
+export type { AccountDocument, AccountType } from './account.model';

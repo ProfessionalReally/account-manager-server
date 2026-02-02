@@ -81,3 +81,47 @@ export const getCurrentUser = (req: Request, res: Response) => {
 		res.status(500).json({ message: 'Server error' });
 	}
 };
+
+export const setupCrypto = async (req: Request, res: Response) => {
+	try {
+		if (!req.user) {
+			return res.status(401).json({ error: 'Unauthorized' });
+		}
+
+		const { masterKeySalt, keyCheck } = req.body;
+
+		const isValidNumberArray = (value: unknown): value is number[] =>
+			Array.isArray(value) &&
+			value.length > 0 &&
+			value.every((item) => typeof item === 'number');
+
+		if (
+			!isValidNumberArray(masterKeySalt) ||
+			!keyCheck ||
+			typeof keyCheck.cipherText !== 'string' ||
+			keyCheck.cipherText.length === 0 ||
+			!isValidNumberArray(keyCheck.iv)
+		) {
+			return res.status(400).json({ error: 'Invalid crypto setup payload' });
+		}
+		const hasMasterKey =
+			Array.isArray(req.user.masterKeySalt) &&
+			req.user.masterKeySalt.length > 0 &&
+			req.user.keyCheck?.cipherText &&
+			req.user.keyCheck.iv?.length > 0;
+
+		if (hasMasterKey) {
+			return res.status(400).json({ error: 'Master password already set' });
+		}
+
+		req.user.masterKeySalt = masterKeySalt;
+		req.user.keyCheck = keyCheck;
+
+		await req.user.save();
+
+		res.sendStatus(200);
+	} catch (error) {
+		console.error(error);
+		res.status(500).json({ message: 'Server error' });
+	}
+};

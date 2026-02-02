@@ -10,6 +10,4 @@ authRouter.post('/login', loginUser);
 
 authRouter.post('/logout', logoutUser);
 
-authRouter.get('/current-user', authMiddleware, getCurrentUser);
-
 export { authRouter };

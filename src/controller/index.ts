@@ -1,3 +1,10 @@
+export {
+	addAccount,
+	deleteAccount,
+	getAccount,
+	getAccounts,
+	updateAccount,
+} from './account.controller';
 export { addCategory, deleteCategory, getCategories, updateCategory } from './category.controller';
 export {
 	addService,
@@ -6,4 +13,10 @@ export {
 	getServices,
 	updateService,
 } from './service.controller';
-export { getCurrentUser, loginUser, logoutUser, registerUser } from './user.controller';
+export {
+	getCurrentUser,
+	loginUser,
+	logoutUser,
+	registerUser,
+	setupCrypto,
+} from './user.controller';

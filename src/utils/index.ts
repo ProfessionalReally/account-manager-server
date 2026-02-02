@@ -1,4 +1,5 @@
 export { sendError } from './error/send-error.util';
+export { mapAccount } from './mappers/map-account.util';
 export { mapCategory } from './mappers/map-category.util';
 export { mapService } from './mappers/map-service.util';
 export { mapUser } from './mappers/map-user.util';

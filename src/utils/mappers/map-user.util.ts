@@ -4,5 +4,7 @@ export const mapUser = (user: UserDocument) => {
 		id: user._id.toString(),
 		email: user.email,
 		registeredAt: user.createdAt,
+		masterKeySalt: user.masterKeySalt,
+		keyCheck: user.keyCheck,
 	};
 };

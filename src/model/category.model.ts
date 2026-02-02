@@ -9,6 +9,7 @@ const CategorySchema = new mongoose.Schema(
 			minlength: 2,
 			maxlength: 50,
 		},
+
 		color: {
 			type: String,
 			required: true,
@@ -26,5 +27,4 @@ const CategorySchema = new mongoose.Schema(
 export const Category = mongoose.model('Category', CategorySchema);
 
 export type CategoryType = InferSchemaType<typeof CategorySchema>;
-
 export type CategoryDocument = HydratedDocument<CategoryType>;

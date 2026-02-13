@@ -31,7 +31,7 @@ const ServiceSchema = new mongoose.Schema(
 		icon: {
 			type: String,
 			validate: {
-				validator: (value: string) => validator.isURL(value),
+				validator: (value: string) => !value || validator.isURL(value),
 				message: 'Icon URL should be a valid',
 			},
 		},
